@@ -1,0 +1,18 @@
+BoxLayoutExample:
+
+<BoxLayoutExample>:
+  orientation: "vertical"
+  Label:
+    text: "Stopwatch"
+  Label:
+    text: "Clock goes here"
+  BoxLayout:
+    Button:
+      text: "Start"
+      on_press: root.start_clock()
+    Button:
+      text: "Stop"
+      on_press: root.stop_clock()
+    Button:
+      text: "Pause"
+      on_press: root.reset_clock()

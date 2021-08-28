@@ -1,10 +1,14 @@
+import time
 from kivy.app import App
+from kivy.properties import NumericProperty, BooleanProperty
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.button import Button
-from kivy.uix.widget import Widget
 
 
 class BoxLayoutExample(BoxLayout):
+    is_running = BooleanProperty(False)
+    elapsed_time = NumericProperty()
+
+
     def start_clock(self):
         print("Starting Clock")
 

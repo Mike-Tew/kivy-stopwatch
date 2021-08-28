@@ -1,3 +1,5 @@
+#:kivy 2.0
+
 BoxLayoutExample:
 
 <BoxLayoutExample>:
@@ -21,6 +23,7 @@ BoxLayoutExample:
       id: stop_button
       text: "Stop"
       on_press: root.stop_clock()
+      disabled: True
 
     Button:
       id: reset_button

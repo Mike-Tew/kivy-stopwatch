@@ -7,30 +7,25 @@ from kivy.uix.boxlayout import BoxLayout
 
 class BoxLayoutExample(BoxLayout):
     is_running = BooleanProperty(False)
+    start_time = NumericProperty()
     elapsed_time = NumericProperty()
     paused_time = NumericProperty()
 
-    def on_is_running(self, instance, value):
-        if value == True:
-            print("Running", value)
-        if value == False:
-            print("Running", value)
+    def format_time(self, time_):
 
-    def format_time(self):
-        pass
+        return str(int(time_))
 
     def update_clock(self, dt):
-        self.elapsed_time += 1
+        self.elapsed_time = time.time() - self.start_time
         print(self.elapsed_time)
-        self.ids.clock_label.text = str(self.elapsed_time)
+        self.ids.clock_label.text = self.format_time(self.elapsed_time)
 
     def start_clock(self):
-        print("Starting Clock")
-        print(self.elapsed_time, self.is_running)
+        self.start_time = time.time()
         self.is_running = True
         self.ids.start_button.disabled = True
         self.ids.stop_button.disabled = False
-        Clock.schedule_interval(self.update_clock, 1)
+        Clock.schedule_interval(self.update_clock, 0.1)
 
     def stop_clock(self):
         print("Stopping Clock")

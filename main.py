@@ -24,20 +24,20 @@ class BoxLayoutExample(BoxLayout):
         self.start_time = time.time()
         self.is_running = True
         self.ids.start_button.disabled = True
-        self.ids.stop_button.disabled = False
+        self.ids.pause_button.disabled = False
         Clock.schedule_interval(self.update_clock, 0.1)
 
     def pause_clock(self):
         self.paused_time = self.elapsed_time
         self.is_running = False
-        self.ids.stop_button.disabled = True
+        self.ids.pause_button.disabled = True
         self.ids.start_button.disabled = False
         Clock.unschedule(self.update_clock)
 
     def reset_clock(self):
         Clock.unschedule(self.update_clock)
         self.ids.start_button.disabled = False
-        self.ids.stop_button.disabled = True
+        self.ids.pause_button.disabled = True
         self.elapsed_time = 0
         self.paused_time = 0
         self.ids.clock_label.text = self.format_time(self.elapsed_time)
